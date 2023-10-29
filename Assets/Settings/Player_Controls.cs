@@ -37,7 +37,7 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Camera"",
+                    ""name"": ""camera"",
                     ""type"": ""PassThrough"",
                     ""id"": ""02ef8ad2-e1f7-415f-ac5c-de67b6ddeca7"",
                     ""expectedControlType"": ""Vector2"",
@@ -109,7 +109,7 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Camera"",
+                    ""action"": ""camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -121,7 +121,7 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
         // player_movement
         m_player_movement = asset.FindActionMap("player_movement", throwIfNotFound: true);
         m_player_movement_movement = m_player_movement.FindAction("movement", throwIfNotFound: true);
-        m_player_movement_Camera = m_player_movement.FindAction("Camera", throwIfNotFound: true);
+        m_player_movement_camera = m_player_movement.FindAction("camera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -182,13 +182,13 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_player_movement;
     private IPlayer_movementActions m_Player_movementActionsCallbackInterface;
     private readonly InputAction m_player_movement_movement;
-    private readonly InputAction m_player_movement_Camera;
+    private readonly InputAction m_player_movement_camera;
     public struct Player_movementActions
     {
         private @Player_Controls m_Wrapper;
         public Player_movementActions(@Player_Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @movement => m_Wrapper.m_player_movement_movement;
-        public InputAction @Camera => m_Wrapper.m_player_movement_Camera;
+        public InputAction @camera => m_Wrapper.m_player_movement_camera;
         public InputActionMap Get() { return m_Wrapper.m_player_movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -201,9 +201,9 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                 @movement.started -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnMovement;
                 @movement.performed -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnMovement;
                 @movement.canceled -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnMovement;
-                @Camera.started -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
-                @Camera.performed -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
-                @Camera.canceled -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
+                @camera.started -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
+                @camera.performed -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
+                @camera.canceled -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
             }
             m_Wrapper.m_Player_movementActionsCallbackInterface = instance;
             if (instance != null)
@@ -211,9 +211,9 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                 @movement.started += instance.OnMovement;
                 @movement.performed += instance.OnMovement;
                 @movement.canceled += instance.OnMovement;
-                @Camera.started += instance.OnCamera;
-                @Camera.performed += instance.OnCamera;
-                @Camera.canceled += instance.OnCamera;
+                @camera.started += instance.OnCamera;
+                @camera.performed += instance.OnCamera;
+                @camera.canceled += instance.OnCamera;
             }
         }
     }

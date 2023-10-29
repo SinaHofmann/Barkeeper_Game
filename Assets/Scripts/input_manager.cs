@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//this script references the Player Controls Input Action Assets and the script so it can be used in other scripts
+
 public class input_manager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Player_Controls playerControls;
+    public Vector2 movementInput;
+    public Vector2 cameraInput;
+
+
+    private void OnEnable()
     {
-        
+
+        if (playerControls == null)
+        {
+            playerControls = new Player_Controls();
+
+            playerControls.player_movement.movement.performed += i => movementInput = i.ReadValue<Vector2>();
+            playerControls.player_movement.camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+          
+
+
+        }
+
+        playerControls.Enable();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        playerControls.Disable();
+
     }
+
 }
