@@ -44,6 +44,15 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""pickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""a143c8be-03da-4b4a-85e9-df2f65a69d3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                     ""action"": ""camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f2143a7-975e-4d51-b844-b0305d75ba91"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
         m_player_movement = asset.FindActionMap("player_movement", throwIfNotFound: true);
         m_player_movement_movement = m_player_movement.FindAction("movement", throwIfNotFound: true);
         m_player_movement_camera = m_player_movement.FindAction("camera", throwIfNotFound: true);
+        m_player_movement_pickup = m_player_movement.FindAction("pickup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,12 +204,14 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
     private IPlayer_movementActions m_Player_movementActionsCallbackInterface;
     private readonly InputAction m_player_movement_movement;
     private readonly InputAction m_player_movement_camera;
+    private readonly InputAction m_player_movement_pickup;
     public struct Player_movementActions
     {
         private @Player_Controls m_Wrapper;
         public Player_movementActions(@Player_Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @movement => m_Wrapper.m_player_movement_movement;
         public InputAction @camera => m_Wrapper.m_player_movement_camera;
+        public InputAction @pickup => m_Wrapper.m_player_movement_pickup;
         public InputActionMap Get() { return m_Wrapper.m_player_movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -204,6 +227,9 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                 @camera.started -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
                 @camera.performed -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
                 @camera.canceled -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnCamera;
+                @pickup.started -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnPickup;
+                @pickup.performed -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnPickup;
+                @pickup.canceled -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnPickup;
             }
             m_Wrapper.m_Player_movementActionsCallbackInterface = instance;
             if (instance != null)
@@ -214,6 +240,9 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                 @camera.started += instance.OnCamera;
                 @camera.performed += instance.OnCamera;
                 @camera.canceled += instance.OnCamera;
+                @pickup.started += instance.OnPickup;
+                @pickup.performed += instance.OnPickup;
+                @pickup.canceled += instance.OnPickup;
             }
         }
     }
@@ -222,5 +251,6 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
+        void OnPickup(InputAction.CallbackContext context);
     }
 }
