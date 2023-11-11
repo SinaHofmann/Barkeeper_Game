@@ -13,6 +13,7 @@ public class pickup_object : MonoBehaviour
     private GameObject heldObject;
     public float movementForce; //how fast the held Object will be moved while holding
     public float raycastRange;
+    public float dragforce;
 
     private void Start()
     {
@@ -79,8 +80,8 @@ public class pickup_object : MonoBehaviour
 
             objRigidbody.useGravity = false;
             objRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-            objRigidbody.drag = 10f;
-            //objRigidbody.transform.parent = holdParent; //if this is turned on, movement force is not affected, it will have no drag
+            objRigidbody.drag = dragforce;
+            objRigidbody.transform.parent = holdParent; //if this is turned on, movement force is not affected, it will have no drag
 
             heldObject = hitObject;
         }
@@ -106,7 +107,7 @@ public class pickup_object : MonoBehaviour
             heldRigidbody.useGravity = true;
             heldRigidbody.constraints = RigidbodyConstraints.None;
             heldRigidbody.drag = 0f;
-            //heldRigidbody.transform.parent = null;
+            heldRigidbody.transform.parent = null;
 
             heldObject = null;
 
