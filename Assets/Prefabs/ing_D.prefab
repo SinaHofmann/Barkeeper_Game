@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6672104009930481887}
   m_Layer: 6
   m_Name: ing_D
-  m_TagString: Untagged
+  m_TagString: Ing_D
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

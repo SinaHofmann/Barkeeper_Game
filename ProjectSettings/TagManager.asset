@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ing_A
+  - Ing_B
+  - Ing_C
+  - Ing_D
+  - Ing_E
+  - Ing_F
+  - Ing_G
+  - Ing_H
+  - Ing_I
+  - Ing_J
   layers:
   - Default
   - TransparentFX
