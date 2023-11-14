@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8442746799868701790}
   - component: {fileID: 242218532107347846}
   - component: {fileID: 5231447398681759243}
+  - component: {fileID: 1406952594357773602}
   m_Layer: 6
   m_Name: ing_C
   m_TagString: Ing_C
@@ -115,3 +116,16 @@ CapsuleCollider:
   m_Height: 0.0025306533
   m_Direction: 1
   m_Center: {x: -0.000031445397, y: 0.000016799271, z: -0.00003917519}
+--- !u!114 &1406952594357773602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938250801746726283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6155436fa0cd5e4480977738eccfc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IngImage: {fileID: 21300000, guid: 80f899ac758889c4baf206958f5054b0, type: 3}

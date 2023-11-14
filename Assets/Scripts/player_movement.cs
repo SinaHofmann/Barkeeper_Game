@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player_movement : MonoBehaviour
 {
@@ -90,6 +91,15 @@ public class player_movement : MonoBehaviour
         }
 
 
+        if (Input.GetKeyDown("r"))
+        {
+            Reset();
+        }
+    }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
 

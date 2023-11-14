@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class jug_manager : MonoBehaviour
 {
 
     public List<int> playersDrinkList = new List<int>(); //make a new list, that list containes the ing that the player throws in the jar
+
+    public List<Image> ingPicsList = new List<Image>(); //list for the Img Pics that will be displayed in the scene, what ing we put in the jug
     
 
     void OnTriggerEnter(Collider other) //what happens if something is thrown in the jar
@@ -18,6 +21,11 @@ public class jug_manager : MonoBehaviour
 
                 playersDrinkList.Add(1);
 
+
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage; 
+                //we go to the ingPicList, to decide what entry we want, we get the entry from the playerDrinkList. So we always have the same entry on both lists. The we declare that in the entry 
+                //in the ingPicList will be filled with the Image that is on the Ing Mesh that was thrown in the jug
+
                 Destroy(other.gameObject);
 
             }
@@ -28,6 +36,8 @@ public class jug_manager : MonoBehaviour
 
                 playersDrinkList.Add(2);
 
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
+
                 Destroy(other.gameObject);
             }
 
@@ -36,6 +46,8 @@ public class jug_manager : MonoBehaviour
                 Debug.Log("Ing C in the jug");
 
                 playersDrinkList.Add(3);
+
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
 
                 Destroy(other.gameObject);
             }
@@ -46,6 +58,8 @@ public class jug_manager : MonoBehaviour
 
                 playersDrinkList.Add(4);
 
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
+
                 Destroy(other.gameObject);
             }
 
@@ -54,6 +68,8 @@ public class jug_manager : MonoBehaviour
                 Debug.Log("Ing E in the jug");
 
                 playersDrinkList.Add(5);
+
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
 
                 Destroy(other.gameObject);
             }
@@ -64,6 +80,8 @@ public class jug_manager : MonoBehaviour
 
                 playersDrinkList.Add(6);
 
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
+
                 Destroy(other.gameObject);
             }
 
@@ -72,6 +90,8 @@ public class jug_manager : MonoBehaviour
                 Debug.Log("Ing G in the jug");
 
                 playersDrinkList.Add(7);
+
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
 
                 Destroy(other.gameObject);
             }
@@ -82,6 +102,8 @@ public class jug_manager : MonoBehaviour
 
                 playersDrinkList.Add(8);
 
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
+
                 Destroy(other.gameObject);
             }
 
@@ -91,6 +113,8 @@ public class jug_manager : MonoBehaviour
 
                 playersDrinkList.Add(9);
 
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
+
                 Destroy(other.gameObject);
             }
 
@@ -99,6 +123,8 @@ public class jug_manager : MonoBehaviour
                 Debug.Log("Ing J in the jug");
 
                 playersDrinkList.Add(10);
+
+                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
 
                 Destroy(other.gameObject);
             }
