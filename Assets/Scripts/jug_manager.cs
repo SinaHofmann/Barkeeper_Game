@@ -9,7 +9,10 @@ public class jug_manager : MonoBehaviour
     public List<int> playersDrinkList = new List<int>(); //make a new list, that list containes the ing that the player throws in the jar
 
     public List<Image> ingPicsList = new List<Image>(); //list for the Img Pics that will be displayed in the scene, what ing we put in the jug
-    
+
+    public bool drinkServed = false;
+
+    public GameObject ServePrompt;
 
     void OnTriggerEnter(Collider other) //what happens if something is thrown in the jar
     {
@@ -130,8 +133,40 @@ public class jug_manager : MonoBehaviour
             }
         }
 
+        
 
       
+    }
+
+    void Update()
+    {
+        //if playersDrinklist has 3 entrys, void "serv drink" is called
+
+        if (playersDrinkList.Count == 3)
+        {
+
+            ServePrompt.SetActive(true);
+
+            ServeDrink();
+        }
+
+        if (drinkServed == true)
+        {
+            ServePrompt.SetActive(false);
+        }
+    }
+
+    void ServeDrink()
+    {
+        //if player presses f, bool "drinkServed" ist true
+
+        if (Input.GetKeyDown("f"))
+        {
+            drinkServed = true;
+
+        }
+
+        
     }
 }
 
