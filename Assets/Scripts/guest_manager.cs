@@ -9,9 +9,13 @@ public class guest_manager : MonoBehaviour
 
     public List<Image> guestFeedbackImagesList = new List<Image>(); //new list for the visuall guest feedback
 
+    public List<Image> guestFeedbackColoursList = new List<Image>(); //new list for colour feedback on the player tries board
+
     jug_manager jugManager; //1. actual name of script 2. how you will reference the script in this code
 
     private bool comparingStartet;
+
+    public GameObject speechbubble;
 
     public Color green;
     public Color yellow;
@@ -54,6 +58,8 @@ public class guest_manager : MonoBehaviour
     {
         comparingStartet = true;
 
+        speechbubble.SetActive(true);
+
         for (int i = 0; i < 3; i++) //loop repeats its content 3 times
         {
             //if both slots are identical
@@ -63,6 +69,12 @@ public class guest_manager : MonoBehaviour
                 guestFeedbackImagesList[i].gameObject.SetActive(true);
 
                 guestFeedbackImagesList[i].color = green;
+
+
+                guestFeedbackColoursList[i].gameObject.SetActive(true);
+
+                guestFeedbackColoursList[i].color = green;
+
 
                 Debug.Log("green");
 
@@ -76,6 +88,12 @@ public class guest_manager : MonoBehaviour
                     guestFeedbackImagesList[i].gameObject.SetActive(true);
 
                     guestFeedbackImagesList[i].color = yellow;
+
+
+                    guestFeedbackColoursList[i].gameObject.SetActive(true);
+
+                    guestFeedbackColoursList[i].color = yellow;
+
                     Debug.Log("yellow");
                 }
                 //if there is no match for the number
@@ -84,6 +102,12 @@ public class guest_manager : MonoBehaviour
                     guestFeedbackImagesList[i].gameObject.SetActive(true);
 
                     guestFeedbackImagesList[i].color = red;
+
+
+                    guestFeedbackColoursList[i].gameObject.SetActive(true);
+
+                    guestFeedbackColoursList[i].color = red;
+
                     Debug.Log("red");
                 }
                 

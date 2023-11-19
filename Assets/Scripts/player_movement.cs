@@ -91,7 +91,7 @@ public class player_movement : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown("r"))
+        if (inputManager.reloadSceneInput)
         {
             Reset();
         }

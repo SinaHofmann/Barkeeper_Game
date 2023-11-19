@@ -12,6 +12,7 @@ public class input_manager : MonoBehaviour
     public Vector2 cameraInput;
     public bool pickUpInput;
     public bool serveDrinkInput;
+    public bool reloadSceneInput;
 
 
     private void OnEnable()
@@ -30,7 +31,8 @@ public class input_manager : MonoBehaviour
             playerControls.player_movement.ServeDrink.started += i => serveDrinkInput = true;
             playerControls.player_movement.ServeDrink.canceled += i => serveDrinkInput = false;
 
-
+            playerControls.player_movement.ReloadScene.started += i => reloadSceneInput = true;
+            playerControls.player_movement.ReloadScene.canceled += i => reloadSceneInput = false;
 
 
         }
