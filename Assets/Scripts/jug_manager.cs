@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class jug_manager : MonoBehaviour
 {
+    input_manager inputManager;
 
     public List<int> playersDrinkList = new List<int>(); //make a new list, that list containes the ing that the player throws in the jar
 
@@ -13,6 +14,13 @@ public class jug_manager : MonoBehaviour
     public bool drinkServed = false;
 
     public GameObject ServePrompt;
+
+
+    private void Start()
+    {
+        inputManager = FindObjectOfType<input_manager>();
+    }
+
 
     void OnTriggerEnter(Collider other) //what happens if something is thrown in the jar
     {
@@ -140,30 +148,35 @@ public class jug_manager : MonoBehaviour
 
     void Update()
     {
-        //if playersDrinklist has 3 entrys, void "serv drink" is called
+        //if playersDrinklist has 3 entrys and we did not already serve a drink: void "serve drink" is called
 
-        if (playersDrinkList.Count == 3)
+        if (playersDrinkList.Count == 3 && drinkServed == false)
         {
-
-            ServePrompt.SetActive(true);
-
             ServeDrink();
+               
         }
-
-        if (drinkServed == true)
-        {
-            ServePrompt.SetActive(false);
-        }
+      
     }
 
     void ServeDrink()
     {
-        //if player presses f, bool "drinkServed" ist true
+        //if the UI element is off it will be turned on
 
-        if (Input.GetKeyDown("f"))
+        if (ServePrompt.activeInHierarchy == false)
         {
+            ServePrompt.SetActive(true);
+
+        }
+
+        if (inputManager.serveDrinkInput) //if F is pressed, Ui element will turn off and drink served is true
+        {
+            inputManager.serveDrinkInput = false; //this way the input will only be called once and not continuesly
+
             drinkServed = true;
 
+            ServePrompt.SetActive(false);
+
+            Debug.Log("Drink was served");
         }
 
         

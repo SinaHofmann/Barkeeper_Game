@@ -11,6 +11,7 @@ public class input_manager : MonoBehaviour
     public Vector2 movementInput;
     public Vector2 cameraInput;
     public bool pickUpInput;
+    public bool serveDrinkInput;
 
 
     private void OnEnable()
@@ -26,7 +27,10 @@ public class input_manager : MonoBehaviour
             playerControls.player_movement.pickup.started += i => pickUpInput = true;
             playerControls.player_movement.pickup.canceled += i => pickUpInput = false;
 
-          
+            playerControls.player_movement.ServeDrink.started += i => serveDrinkInput = true;
+            playerControls.player_movement.ServeDrink.canceled += i => serveDrinkInput = false;
+
+
 
 
         }

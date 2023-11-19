@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class guest_manager : MonoBehaviour
 {
     public List<int> guestsDrinkList = new List<int>(); //make a new list, that list containes the ing that the guest randomly chooses
 
+    public List<Image> guestFeedbackImagesList = new List<Image>(); //new list for the visuall guest feedback
+
     jug_manager jugManager; //1. actual name of script 2. how you will reference the script in this code
 
+    private bool comparingStartet;
+
+    public Color green;
+    public Color yellow;
+    public Color red;
 
 
     private void Start()
@@ -29,11 +37,60 @@ public class guest_manager : MonoBehaviour
 
     private void Update()
     {
-        //wir prüfen, ob der spieler das getränk serviert hat. Dann müssen playersDrinkList und guestsDrinkList verglichen werden
+        
 
-        if (jugManager.drinkServed == true)
+        if (comparingStartet == false)
         {
+            if (jugManager.drinkServed == true)
+            {
+                CompareLists();
+            }
+        }
+        
+    }
 
+    //wir prüfen, ob der spieler das getränk serviert hat. Dann müssen playersDrinkList und guestsDrinkList verglichen werden
+    void CompareLists()
+    {
+        comparingStartet = true;
+
+        for (int i = 0; i < 3; i++) //loop repeats its content 3 times
+        {
+            //if both slots are identical
+            if (jugManager.playersDrinkList[i] == guestsDrinkList[i]) //i will always get you the slot in the list, that the loop is currently at
+            {
+                
+                guestFeedbackImagesList[i].gameObject.SetActive(true);
+
+                guestFeedbackImagesList[i].color = green;
+
+                Debug.Log("green");
+
+            }
+            else if(jugManager.playersDrinkList[i] != guestsDrinkList[i])
+            {
+                //if its not the same number in the slot, but the number is anywhere in the list
+                if (guestsDrinkList.Contains(jugManager.playersDrinkList[i]))
+                {
+                    
+                    guestFeedbackImagesList[i].gameObject.SetActive(true);
+
+                    guestFeedbackImagesList[i].color = yellow;
+                    Debug.Log("yellow");
+                }
+                //if there is no match for the number
+                else if (!guestsDrinkList.Contains(jugManager.playersDrinkList[i]))
+                {
+                    guestFeedbackImagesList[i].gameObject.SetActive(true);
+
+                    guestFeedbackImagesList[i].color = red;
+                    Debug.Log("red");
+                }
+                
+               
+            }
+
+                
         }
     }
 }
