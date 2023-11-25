@@ -33,6 +33,12 @@ public class guest_manager : MonoBehaviour
         {
             int numberToAdd = Random.Range(1, 11); //it generates a number between 1 and 10 and adds that to list
 
+            while (guestsDrinkList.Contains(numberToAdd)) //while the list contains a number twice, the number is generated new until it differs
+            {
+                numberToAdd = Random.Range(1, 11);
+            }
+
+            
             guestsDrinkList.Add(numberToAdd);
         }
 
