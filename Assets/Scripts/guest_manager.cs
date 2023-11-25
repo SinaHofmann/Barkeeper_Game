@@ -9,7 +9,7 @@ public class guest_manager : MonoBehaviour
 
     public List<Image> guestFeedbackImagesList = new List<Image>(); //new list for the visuall guest feedback
 
-    public List<Image> guestFeedbackColoursList = new List<Image>(); //new list for colour feedback on the player tries board
+    public List<Image> BoardColoursList = new List<Image>(); //new list for colour feedback on the player tries board
 
     jug_manager jugManager; //1. actual name of script 2. how you will reference the script in this code
 
@@ -77,9 +77,9 @@ public class guest_manager : MonoBehaviour
                 guestFeedbackImagesList[i].color = green;
 
 
-                guestFeedbackColoursList[i].gameObject.SetActive(true);
+                BoardColoursList[i].gameObject.SetActive(true);
 
-                guestFeedbackColoursList[i].color = green;
+                BoardColoursList[i].color = green;
 
 
                 Debug.Log("green");
@@ -96,9 +96,9 @@ public class guest_manager : MonoBehaviour
                     guestFeedbackImagesList[i].color = yellow;
 
 
-                    guestFeedbackColoursList[i].gameObject.SetActive(true);
+                    BoardColoursList[i].gameObject.SetActive(true);
 
-                    guestFeedbackColoursList[i].color = yellow;
+                    BoardColoursList[i].color = yellow;
 
                     Debug.Log("yellow");
                 }
@@ -110,9 +110,9 @@ public class guest_manager : MonoBehaviour
                     guestFeedbackImagesList[i].color = red;
 
 
-                    guestFeedbackColoursList[i].gameObject.SetActive(true);
+                    BoardColoursList[i].gameObject.SetActive(true);
 
-                    guestFeedbackColoursList[i].color = red;
+                    BoardColoursList[i].color = red;
 
                     Debug.Log("red");
                 }
