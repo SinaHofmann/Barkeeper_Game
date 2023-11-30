@@ -39,6 +39,8 @@ public class jug_manager : MonoBehaviour
 
                 Destroy(other.gameObject);
 
+               
+
             }
 
             if (other.CompareTag("Ing_B"))

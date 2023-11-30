@@ -17,6 +17,10 @@ public class guest_manager : MonoBehaviour
 
     public GameObject speechbubble;
 
+    public Sprite correct;
+    public Sprite almost;
+    public Sprite wrong;
+
     public Color green;
     public Color yellow;
     public Color red;
@@ -81,6 +85,8 @@ public class guest_manager : MonoBehaviour
 
                 BoardColoursList[i].color = green;
 
+                BoardColoursList[i].sprite = correct;
+
 
                 Debug.Log("green");
 
@@ -100,6 +106,8 @@ public class guest_manager : MonoBehaviour
 
                     BoardColoursList[i].color = yellow;
 
+                    BoardColoursList[i].sprite = almost;
+
                     Debug.Log("yellow");
                 }
                 //if there is no match for the number
@@ -113,6 +121,8 @@ public class guest_manager : MonoBehaviour
                     BoardColoursList[i].gameObject.SetActive(true);
 
                     BoardColoursList[i].color = red;
+
+                    BoardColoursList[i].sprite = wrong;
 
                     Debug.Log("red");
                 }
