@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class guest_manager : MonoBehaviour
 {
     public List<int> guestsDrinkList = new List<int>(); //make a new list, that list containes the ing that the guest randomly chooses
 
-    public List<Image> guestFeedbackImagesList = new List<Image>(); //new list for the visuall guest feedback
+    public List<Image> ingPicGuestList = new List<Image>(); //Ing pictures in guest speechbubble that were put in jug
 
-    public List<Image> BoardColoursList = new List<Image>(); //new list for colour feedback on the player tries board
+    public List<Image> feedbackColoursGuestList = new List<Image>(); //coloured feedback in guest speechbubble
 
     jug_manager jugManager; //1. actual name of script 2. how you will reference the script in this code
 
@@ -24,6 +25,21 @@ public class guest_manager : MonoBehaviour
     public Color green;
     public Color yellow;
     public Color red;
+
+    public int roundCounter = 1;
+
+
+
+    private List<List<Image>> motherList = new List<List<Image>>(); //mother list that containes 5 lists, 1 for each round
+
+    public List<Image> round1List = new List<Image>(); //list for the Img Pics that will be displayed on the board, what ing we put in the jug
+    public List<Image> round2List = new List<Image>();
+    public List<Image> round3List = new List<Image>();
+    public List<Image> round4List = new List<Image>();
+    public List<Image> round5List = new List<Image>();
+
+    public List<Image> concatList = new List<Image>();
+
 
 
     private void Start()
@@ -45,6 +61,14 @@ public class guest_manager : MonoBehaviour
             
             guestsDrinkList.Add(numberToAdd);
         }
+
+
+        motherList.Add(round1List);
+        motherList.Add(round2List);
+        motherList.Add(round3List);
+        motherList.Add(round4List);
+        motherList.Add(round5List);
+
 
 
     }
@@ -76,19 +100,19 @@ public class guest_manager : MonoBehaviour
             if (jugManager.playersDrinkList[i] == guestsDrinkList[i]) //i will always get you the slot in the list, that the loop is currently at
             {
                 
-                guestFeedbackImagesList[i].gameObject.SetActive(true);
+                ingPicGuestList[i].gameObject.SetActive(true);
 
-                guestFeedbackImagesList[i].color = green;
-
-
-                BoardColoursList[i].gameObject.SetActive(true);
-
-                BoardColoursList[i].color = green;
-
-                BoardColoursList[i].sprite = correct;
+                //guestFeedbackImagesList[i].color = green;
 
 
-                Debug.Log("green");
+                feedbackColoursGuestList[i].gameObject.SetActive(true);
+
+                feedbackColoursGuestList[i].color = green;
+
+                feedbackColoursGuestList[i].sprite = correct;
+
+
+                //Debug.Log("green");
 
             }
             else if(jugManager.playersDrinkList[i] != guestsDrinkList[i])
@@ -97,34 +121,34 @@ public class guest_manager : MonoBehaviour
                 if (guestsDrinkList.Contains(jugManager.playersDrinkList[i]))
                 {
                     
-                    guestFeedbackImagesList[i].gameObject.SetActive(true);
+                    ingPicGuestList[i].gameObject.SetActive(true);
 
-                    guestFeedbackImagesList[i].color = yellow;
+                    //guestFeedbackImagesList[i].color = yellow;
 
 
-                    BoardColoursList[i].gameObject.SetActive(true);
+                    feedbackColoursGuestList[i].gameObject.SetActive(true);
 
-                    BoardColoursList[i].color = yellow;
+                    feedbackColoursGuestList[i].color = yellow;
 
-                    BoardColoursList[i].sprite = almost;
+                    feedbackColoursGuestList[i].sprite = almost;
 
-                    Debug.Log("yellow");
+                    //Debug.Log("yellow");
                 }
                 //if there is no match for the number
                 else if (!guestsDrinkList.Contains(jugManager.playersDrinkList[i]))
                 {
-                    guestFeedbackImagesList[i].gameObject.SetActive(true);
+                    ingPicGuestList[i].gameObject.SetActive(true);
 
-                    guestFeedbackImagesList[i].color = red;
+                    //guestFeedbackImagesList[i].color = red;
 
 
-                    BoardColoursList[i].gameObject.SetActive(true);
+                    feedbackColoursGuestList[i].gameObject.SetActive(true);
 
-                    BoardColoursList[i].color = red;
+                    feedbackColoursGuestList[i].color = red;
 
-                    BoardColoursList[i].sprite = wrong;
+                    feedbackColoursGuestList[i].sprite = wrong;
 
-                    Debug.Log("red");
+                    //Debug.Log("red");
                 }
                 
                
@@ -132,5 +156,77 @@ public class guest_manager : MonoBehaviour
 
                 
         }
+
+        int greenSlot = 0;
+
+        for (int i = 0; i < 3; i++) //winnig condition
+        {
+            if (feedbackColoursGuestList[i].color == green)
+            {
+                greenSlot++;
+            }
+
+        }
+
+        if (greenSlot == 3)
+        {
+            Debug.Log("You won!");
+
+            //bool "game has ended" muss auf true und das ist der faktor das der nächste gast kommt
+        }
+        else if (greenSlot != 3 && roundCounter < 5)
+        {
+
+            Debug.Log("Next round");
+
+            StartCoroutine(NextRoundTimer());
+
+        }
+        else if (greenSlot != 3 && roundCounter == 5)
+        {
+            Debug.Log("You lost!");
+
+            //bool "game has ended" muss auf true und das ist der faktor das der nächste gast kommt
+        }
+
+
+    }
+
+
+    IEnumerator NextRoundTimer()
+    {
+
+
+        yield return new WaitForSeconds(3);
+
+        Debug.Log("We waited 3 sec");
+
+
+        concatList = ingPicGuestList.Concat(feedbackColoursGuestList).ToList(); //inf Pics and Ing feedback will be added to one list
+
+        for (int i = 0; i < concatList.Count; i++)
+        {
+            motherList[roundCounter - 1][i].sprite = concatList[i].sprite; //we look at number of rounds and the corresponding List in the motherlist, then take the sprite components of the Images in th Speechbubble and put them in the corresponding list under the motherlist
+
+            motherList[roundCounter - 1][i].color = concatList[i].color;
+
+            motherList[roundCounter - 1][i].gameObject.SetActive(true);
+        }
+
+
+
+
+        // content of speechbubble appears on board 
+
+        //rundencounter int, zählt pro runde hoch, überliste[rundsecounter], loop listenlänge, concat 2 listen der speechbubble in eine, setzten von dieser liste 1 auf überliste[rundsecounter][1] etc.
+
+
+        // speechbubble wipe
+        // jug wipe
+        // ing new spawn
+
+        roundCounter++;
+
+        yield return null;
     }
 }

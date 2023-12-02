@@ -129,3 +129,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IngImage: {fileID: 21300000, guid: 70cb1ac22c402cb4683f2c26eaeca651, type: 3}
+  id: 2

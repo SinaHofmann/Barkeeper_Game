@@ -5,4 +5,6 @@ using UnityEngine;
 public class ing_images : MonoBehaviour
 {
     public Sprite IngImage;
+
+    public int id;
 }

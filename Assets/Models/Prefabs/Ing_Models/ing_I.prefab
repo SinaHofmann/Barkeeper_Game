@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1920614536562659920}
   - component: {fileID: 4414534749496026778}
   - component: {fileID: 3063017667212786203}
-  - component: {fileID: -4944302093404171878}
   - component: {fileID: 2230638553056099796}
+  - component: {fileID: -4944302093404171878}
   m_Layer: 6
   m_Name: ing_I
   m_TagString: Ing_I
@@ -102,19 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-4944302093404171878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2757170023011944271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6155436fa0cd5e4480977738eccfc6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IngImage: {fileID: 21300000, guid: b8420e85599381d4e96b0fc1119f5f8a, type: 3}
 --- !u!64 &2230638553056099796
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +116,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1805792773771977844, guid: 6b943b5b57e56fa46b59e33baa298bf5, type: 3}
+--- !u!114 &-4944302093404171878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757170023011944271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6155436fa0cd5e4480977738eccfc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IngImage: {fileID: 21300000, guid: b8420e85599381d4e96b0fc1119f5f8a, type: 3}
+  id: 9

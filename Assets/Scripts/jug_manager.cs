@@ -9,7 +9,9 @@ public class jug_manager : MonoBehaviour
 
     public List<int> playersDrinkList = new List<int>(); //make a new list, that list containes the ing that the player throws in the jar
 
-    public List<Image> ingPicsList = new List<Image>(); //list for the Img Pics that will be displayed in the scene, what ing we put in the jug
+    //public List<Image> ingPicsBoardList = new List<Image>(); //list for the Img Pics that will be displayed on the board, what ing we put in the jug
+
+    guest_manager guestManager;
 
     public bool drinkServed = false;
 
@@ -19,6 +21,8 @@ public class jug_manager : MonoBehaviour
     private void Start()
     {
         inputManager = FindObjectOfType<input_manager>();
+
+        guestManager = FindObjectOfType<guest_manager>();
     }
 
 
@@ -26,126 +30,17 @@ public class jug_manager : MonoBehaviour
     {
         if (playersDrinkList.Count < 3)
         {
-            if (other.CompareTag("Ing_A"))
-            {
-                Debug.Log("Ing A in the jug");
+            playersDrinkList.Add(other.gameObject.GetComponent<ing_images>().id);
 
-                playersDrinkList.Add(1);
+            guestManager.ingPicGuestList[playersDrinkList.Count - 1].gameObject.SetActive(true);
 
+            guestManager.ingPicGuestList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
+            //we go to the ingPicList, to decide what entry we want, we get the entry from the playerDrinkList. So we always have the same entry on both lists. The we declare that in the entry 
+            //in the ingPicList will be filled with the Image that is on the Ing Mesh that was thrown in the jug
 
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage; 
-                //we go to the ingPicList, to decide what entry we want, we get the entry from the playerDrinkList. So we always have the same entry on both lists. The we declare that in the entry 
-                //in the ingPicList will be filled with the Image that is on the Ing Mesh that was thrown in the jug
-
-                Destroy(other.gameObject);
-
-               
-
-            }
-
-            if (other.CompareTag("Ing_B"))
-            {
-                Debug.Log("Ing B in the jug");
-
-                playersDrinkList.Add(2);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_C"))
-            {
-                Debug.Log("Ing C in the jug");
-
-                playersDrinkList.Add(3);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_D"))
-            {
-                Debug.Log("Ing D in the jug");
-
-                playersDrinkList.Add(4);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_E"))
-            {
-                Debug.Log("Ing E in the jug");
-
-                playersDrinkList.Add(5);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_F"))
-            {
-                Debug.Log("Ing F in the jug");
-
-                playersDrinkList.Add(6);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_G"))
-            {
-                Debug.Log("Ing G in the jug");
-
-                playersDrinkList.Add(7);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_H"))
-            {
-                Debug.Log("Ing H in the jug");
-
-                playersDrinkList.Add(8);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_I"))
-            {
-                Debug.Log("Ing I in the jug");
-
-                playersDrinkList.Add(9);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
-
-            if (other.CompareTag("Ing_J"))
-            {
-                Debug.Log("Ing J in the jug");
-
-                playersDrinkList.Add(10);
-
-                ingPicsList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-
-                Destroy(other.gameObject);
-            }
+            Destroy(other.gameObject);
         }
-
-        
-
-      
+          
     }
 
     void Update()
