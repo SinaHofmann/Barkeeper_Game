@@ -41,11 +41,38 @@ public class guest_manager : MonoBehaviour
     public List<Image> concatList = new List<Image>();
 
 
+    public GameObject ingA;
+    public GameObject ingB;
+    public GameObject ingC;
+    public GameObject ingD;
+    public GameObject ingE;
+    public GameObject ingF;
+    public GameObject ingG;
+    public GameObject ingH;
+    public GameObject ingI;
+    public GameObject ingJ;
+
+    public Transform spawnPointA;
+    public Transform spawnPointB;
+    public Transform spawnPointC;
+    public Transform spawnPointD;
+    public Transform spawnPointE;
+    public Transform spawnPointF;
+    public Transform spawnPointG;
+    public Transform spawnPointH;
+    public Transform spawnPointI;
+    public Transform spawnPointJ;
+
+
+
+
 
     private void Start()
     {
 
         jugManager = FindObjectOfType<jug_manager>();
+
+     
 
 
 
@@ -70,6 +97,7 @@ public class guest_manager : MonoBehaviour
         motherList.Add(round5List);
 
 
+        
 
     }
 
@@ -84,10 +112,12 @@ public class guest_manager : MonoBehaviour
                 CompareLists();
             }
         }
+
+
         
     }
 
-    //wir prüfen, ob der spieler das getränk serviert hat. Dann müssen playersDrinkList und guestsDrinkList verglichen werden
+    //wir prüfen, ob der spieler das getränk serviert hat. Dann müssen playersDrinkList und guestsDrinkList verglichen werden, hier wird das Feedback erzeugt
     void CompareLists()
     {
         comparingStartet = true;
@@ -186,6 +216,8 @@ public class guest_manager : MonoBehaviour
         {
             Debug.Log("You lost!");
 
+            //last feedback wont be put on board, but it does not matter
+
             //bool "game has ended" muss auf true und das ist der faktor das der nächste gast kommt
         }
 
@@ -197,12 +229,9 @@ public class guest_manager : MonoBehaviour
     {
 
 
-        yield return new WaitForSeconds(3);
+        // content of speechbubble appears on board 
 
-        Debug.Log("We waited 3 sec");
-
-
-        concatList = ingPicGuestList.Concat(feedbackColoursGuestList).ToList(); //inf Pics and Ing feedback will be added to one list
+        concatList = ingPicGuestList.Concat(feedbackColoursGuestList).ToList(); //ing Pics and Ing feedback will be added to one list
 
         for (int i = 0; i < concatList.Count; i++)
         {
@@ -214,19 +243,64 @@ public class guest_manager : MonoBehaviour
         }
 
 
+        yield return new WaitForSeconds(2);
 
-
-        // content of speechbubble appears on board 
-
-        //rundencounter int, zählt pro runde hoch, überliste[rundsecounter], loop listenlänge, concat 2 listen der speechbubble in eine, setzten von dieser liste 1 auf überliste[rundsecounter][1] etc.
+        Debug.Log("We waited 2 sec");
 
 
         // speechbubble wipe
+
+        for (int i = 0; i < 3; i++)
+        {
+
+            ingPicGuestList[i].gameObject.SetActive(false);
+
+            feedbackColoursGuestList[i].gameObject.SetActive(false);
+
+        }
+
         // jug wipe
-        // ing new spawn
+
+        jugManager.playersDrinkList.Clear();
+
+        jugManager.drinkServed = false;
+
+        comparingStartet = false;
+
+
+
+        // ing new spawn, destroy all ing and respawn new ones
+
+        DestroyIng();
+
+        Instantiate(ingA, spawnPointA.position, Quaternion.identity);
+        Instantiate(ingB, spawnPointB.position, Quaternion.identity);
+        Instantiate(ingC, spawnPointC.position, Quaternion.identity);
+        Instantiate(ingD, spawnPointD.position, Quaternion.identity);
+        Instantiate(ingE, spawnPointE.position, Quaternion.identity);
+        Instantiate(ingF, spawnPointF.position, Quaternion.identity);
+        Instantiate(ingG, spawnPointG.position, Quaternion.identity);
+        Instantiate(ingH, spawnPointH.position, Quaternion.identity);
+        Instantiate(ingI, spawnPointI.position, Quaternion.identity);
+        Instantiate(ingJ, spawnPointJ.position, Quaternion.identity);
+
 
         roundCounter++;
 
         yield return null;
     }
+
+
+    void DestroyIng()
+    {
+        GameObject[] foundObjects = GameObject.FindGameObjectsWithTag("Ing");
+
+        foreach (GameObject go in foundObjects)
+        {
+            Destroy(go);
+        }
+
+
+    }
+
 }

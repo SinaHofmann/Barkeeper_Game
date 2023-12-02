@@ -14,6 +14,7 @@ TagManager:
   - Ing_H
   - Ing_I
   - Ing_J
+  - Ing
   layers:
   - Default
   - TransparentFX
