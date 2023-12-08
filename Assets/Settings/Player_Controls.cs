@@ -71,6 +71,15 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""rotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4f251d6-d9d2-4031-9d5a-4ca168dc6d9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                     ""action"": ""ReloadScene"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d23e277c-0ac1-4944-bce5-d3a56a1eb96e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
         m_player_movement_pickup = m_player_movement.FindAction("pickup", throwIfNotFound: true);
         m_player_movement_ServeDrink = m_player_movement.FindAction("ServeDrink", throwIfNotFound: true);
         m_player_movement_ReloadScene = m_player_movement.FindAction("ReloadScene", throwIfNotFound: true);
+        m_player_movement_rotate = m_player_movement.FindAction("rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_player_movement_pickup;
     private readonly InputAction m_player_movement_ServeDrink;
     private readonly InputAction m_player_movement_ReloadScene;
+    private readonly InputAction m_player_movement_rotate;
     public struct Player_movementActions
     {
         private @Player_Controls m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
         public InputAction @pickup => m_Wrapper.m_player_movement_pickup;
         public InputAction @ServeDrink => m_Wrapper.m_player_movement_ServeDrink;
         public InputAction @ReloadScene => m_Wrapper.m_player_movement_ReloadScene;
+        public InputAction @rotate => m_Wrapper.m_player_movement_rotate;
         public InputActionMap Get() { return m_Wrapper.m_player_movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                 @ReloadScene.started -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnReloadScene;
                 @ReloadScene.performed -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnReloadScene;
                 @ReloadScene.canceled -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnReloadScene;
+                @rotate.started -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnRotate;
+                @rotate.performed -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnRotate;
+                @rotate.canceled -= m_Wrapper.m_Player_movementActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_Player_movementActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
                 @ReloadScene.started += instance.OnReloadScene;
                 @ReloadScene.performed += instance.OnReloadScene;
                 @ReloadScene.canceled += instance.OnReloadScene;
+                @rotate.started += instance.OnRotate;
+                @rotate.performed += instance.OnRotate;
+                @rotate.canceled += instance.OnRotate;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @Player_Controls : IInputActionCollection2, IDisposable
         void OnPickup(InputAction.CallbackContext context);
         void OnServeDrink(InputAction.CallbackContext context);
         void OnReloadScene(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }

@@ -6,6 +6,10 @@ using System.Linq;
 
 public class guest_manager : MonoBehaviour
 {
+    
+    [Header("Drink List and Feedback")]
+    [Space(10)]
+
     public List<int> guestsDrinkList = new List<int>(); //make a new list, that list containes the ing that the guest randomly chooses
 
     public List<Image> ingPicGuestList = new List<Image>(); //Ing pictures in guest speechbubble that were put in jug
@@ -28,15 +32,21 @@ public class guest_manager : MonoBehaviour
 
     public int TryCounter = 1;
 
-
-    //private bool roundHasEnded;
+    [Space(30)]
+    [Header("Guest Prefabs")]
+    [Space(10)]
 
     public List<GameObject> guestPrefabsList = new List<GameObject>();
 
     private GameObject currentGuest;
 
+    
 
     private List<List<Image>> motherList = new List<List<Image>>(); //mother list that containes 5 lists, 1 for each round
+
+    [Space(30)]
+    [Header("Display on Board")]
+    [Space(10)]
 
     public List<Image> round1List = new List<Image>(); //list for the Img Pics that will be displayed on the board, what ing we put in the jug
     public List<Image> round2List = new List<Image>();
@@ -46,6 +56,9 @@ public class guest_manager : MonoBehaviour
 
     public List<Image> concatList = new List<Image>();
 
+    [Space(30)]
+    [Header("Respawn Ing")]
+    [Space(10)]
 
     public GameObject ingA;
     public GameObject ingB;
@@ -326,10 +339,10 @@ public class guest_manager : MonoBehaviour
         Instantiate(ingD, spawnPointD.position, Quaternion.identity);
         Instantiate(ingE, spawnPointE.position, Quaternion.identity);
         Instantiate(ingF, spawnPointF.position, Quaternion.identity);
-        Instantiate(ingG, spawnPointG.position, Quaternion.identity);
+        Instantiate(ingG, spawnPointG.position, Quaternion.Euler(0, 180, 0));
         Instantiate(ingH, spawnPointH.position, Quaternion.identity);
         Instantiate(ingI, spawnPointI.position, Quaternion.identity);
-        Instantiate(ingJ, spawnPointJ.position, Quaternion.identity);
+        Instantiate(ingJ, spawnPointJ.position, Quaternion.Euler(0, 180, 0));
 
 
         TryCounter++;

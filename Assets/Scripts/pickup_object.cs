@@ -14,6 +14,7 @@ public class pickup_object : MonoBehaviour
     public float movementForce; //how fast the held Object will be moved while holding
     public float raycastRange;
     public float dragforce;
+    public float rotationspeed;
 
     private void Start()
     {
@@ -51,6 +52,14 @@ public class pickup_object : MonoBehaviour
 
                 indicatorDecal.transform.rotation = Quaternion.Euler(new Vector3(-90, 0, 180));
             }
+
+            if (inputManager.rotateInput == true)
+            {
+                RotateObject();
+
+                
+            }
+
         } 
         else if (heldObject == null)
         {
@@ -85,6 +94,8 @@ public class pickup_object : MonoBehaviour
 
             heldObject = hitObject;
         }
+
+
     }
 
 
@@ -112,6 +123,13 @@ public class pickup_object : MonoBehaviour
             heldObject = null;
 
         }
+    }
+
+    void RotateObject()
+    {
+        Debug.Log("weeh spinny");
+
+        heldObject.transform.Rotate(Vector3.right * rotationspeed);
     }
 
 

@@ -14,6 +14,8 @@ public class input_manager : MonoBehaviour
     public bool serveDrinkInput;
     public bool reloadSceneInput;
 
+    public bool rotateInput;
+
 
     private void OnEnable()
     {
@@ -27,6 +29,9 @@ public class input_manager : MonoBehaviour
 
             playerControls.player_movement.pickup.started += i => pickUpInput = true;
             playerControls.player_movement.pickup.canceled += i => pickUpInput = false;
+
+            playerControls.player_movement.rotate.started += i => rotateInput = true;
+            playerControls.player_movement.rotate.canceled += i => rotateInput = false;
 
             playerControls.player_movement.ServeDrink.started += i => serveDrinkInput = true;
             playerControls.player_movement.ServeDrink.canceled += i => serveDrinkInput = false;
