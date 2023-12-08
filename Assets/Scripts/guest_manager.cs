@@ -26,8 +26,14 @@ public class guest_manager : MonoBehaviour
     public Color yellow;
     public Color red;
 
-    public int roundCounter = 1;
+    public int TryCounter = 1;
 
+
+    //private bool roundHasEnded;
+
+    public List<GameObject> guestPrefabsList = new List<GameObject>();
+
+    private GameObject currentGuest;
 
 
     private List<List<Image>> motherList = new List<List<Image>>(); //mother list that containes 5 lists, 1 for each round
@@ -65,15 +71,45 @@ public class guest_manager : MonoBehaviour
 
 
 
+    
 
 
     private void Start()
     {
+        
 
         jugManager = FindObjectOfType<jug_manager>();
 
-     
+        FirstGuest();
 
+    
+    }
+
+    void GenerateNewCombi()
+    {
+        // wipe the guest list
+        guestsDrinkList.Clear();
+
+        //wipe the speech bubble
+
+        for (int i = 0; i < 3; i++)
+        {
+
+            ingPicGuestList[i].gameObject.SetActive(false);
+
+            feedbackColoursGuestList[i].gameObject.SetActive(false);
+
+        }
+
+        //wipe board
+
+        for (int i = 0; i < motherList.Count; i++)
+        {
+            for (int ii = 0; ii < 6; ii++)
+            {
+                motherList[i][ii].gameObject.SetActive(false);
+            }
+        }
 
 
         for (int i = 0; i < 3; i++) //loop repeats its content 3 times
@@ -85,7 +121,7 @@ public class guest_manager : MonoBehaviour
                 numberToAdd = Random.Range(1, 11);
             }
 
-            
+
             guestsDrinkList.Add(numberToAdd);
         }
 
@@ -95,11 +131,9 @@ public class guest_manager : MonoBehaviour
         motherList.Add(round3List);
         motherList.Add(round4List);
         motherList.Add(round5List);
-
-
-        
-
     }
+     
+
 
     private void Update()
     {
@@ -112,7 +146,6 @@ public class guest_manager : MonoBehaviour
                 CompareLists();
             }
         }
-
 
         
     }
@@ -202,30 +235,44 @@ public class guest_manager : MonoBehaviour
         {
             Debug.Log("You won!");
 
-            //bool "game has ended" muss auf true und das ist der faktor das der nächste gast kommt
+            StartCoroutine(StartNewRound());
+
         }
-        else if (greenSlot != 3 && roundCounter < 5)
+        else if (greenSlot != 3 && TryCounter < 5)
         {
 
-            Debug.Log("Next round");
+            Debug.Log("Next try");
 
-            StartCoroutine(NextRoundTimer());
+            StartCoroutine(NextTryTimer());
 
         }
-        else if (greenSlot != 3 && roundCounter == 5)
+        else if (greenSlot != 3 && TryCounter == 5)
         {
             Debug.Log("You lost!");
 
-            //last feedback wont be put on board, but it does not matter
+            StartCoroutine(StartNewRound());
 
-            //bool "game has ended" muss auf true und das ist der faktor das der nächste gast kommt
+           
         }
 
 
     }
 
+    public void SpeechBubbleImages(GameObject ingInJug)
+    {
+        jugManager.playersDrinkList.Add(ingInJug.GetComponent<ing_images>().id);
 
-    IEnumerator NextRoundTimer()
+        ingPicGuestList[jugManager.playersDrinkList.Count - 1].gameObject.SetActive(true);
+
+        ingPicGuestList[jugManager.playersDrinkList.Count - 1].sprite = ingInJug.GetComponent<ing_images>().IngImage;
+        //we go to the ingPicList, to decide what entry we want, we get the entry from the playerDrinkList. So we always have the same entry on both lists. The we declare that in the entry 
+        //in the ingPicList will be filled with the Image that is on the Ing Mesh that was thrown in the jug
+
+        Destroy(ingInJug);
+    }
+
+
+    IEnumerator NextTryTimer()
     {
 
 
@@ -235,11 +282,11 @@ public class guest_manager : MonoBehaviour
 
         for (int i = 0; i < concatList.Count; i++)
         {
-            motherList[roundCounter - 1][i].sprite = concatList[i].sprite; //we look at number of rounds and the corresponding List in the motherlist, then take the sprite components of the Images in th Speechbubble and put them in the corresponding list under the motherlist
+            motherList[TryCounter - 1][i].sprite = concatList[i].sprite; //we look at number of rounds and the corresponding List in the motherlist, then take the sprite components of the Images in th Speechbubble and put them in the corresponding list under the motherlist
 
-            motherList[roundCounter - 1][i].color = concatList[i].color;
+            motherList[TryCounter - 1][i].color = concatList[i].color;
 
-            motherList[roundCounter - 1][i].gameObject.SetActive(true);
+            motherList[TryCounter - 1][i].gameObject.SetActive(true);
         }
 
 
@@ -285,7 +332,7 @@ public class guest_manager : MonoBehaviour
         Instantiate(ingJ, spawnPointJ.position, Quaternion.identity);
 
 
-        roundCounter++;
+        TryCounter++;
 
         yield return null;
     }
@@ -302,5 +349,74 @@ public class guest_manager : MonoBehaviour
 
 
     }
+
+    //guest spawning part
+
+    IEnumerator StartNewRound()
+    {
+        //guest despawn animation goes here
+
+        yield return new WaitForSeconds(3);
+
+        Destroy(currentGuest.gameObject);
+
+
+        int randomGuest = Random.Range(0, 5);
+
+        GameObject instantiatedGuest = Instantiate(guestPrefabsList[randomGuest].gameObject);
+
+        currentGuest = instantiatedGuest;
+
+        GenerateNewCombi();
+
+
+
+        // jug wipe
+
+        jugManager.playersDrinkList.Clear();
+
+        jugManager.drinkServed = false;
+
+        comparingStartet = false;
+
+        // ing new spawn, destroy all ing and respawn new ones
+
+        DestroyIng();
+
+        Instantiate(ingA, spawnPointA.position, Quaternion.identity);
+        Instantiate(ingB, spawnPointB.position, Quaternion.identity);
+        Instantiate(ingC, spawnPointC.position, Quaternion.identity);
+        Instantiate(ingD, spawnPointD.position, Quaternion.identity);
+        Instantiate(ingE, spawnPointE.position, Quaternion.identity);
+        Instantiate(ingF, spawnPointF.position, Quaternion.identity);
+        Instantiate(ingG, spawnPointG.position, Quaternion.identity);
+        Instantiate(ingH, spawnPointH.position, Quaternion.identity);
+        Instantiate(ingI, spawnPointI.position, Quaternion.identity);
+        Instantiate(ingJ, spawnPointJ.position, Quaternion.identity);
+
+
+        TryCounter = 1;
+
+
+
+        yield return null;
+
+    }
+
+    void FirstGuest()
+    {
+        int randomGuest = Random.Range(0, 5);
+
+        GameObject instantiatedGuest = Instantiate(guestPrefabsList[randomGuest].gameObject);
+
+        currentGuest = instantiatedGuest;
+
+        
+
+        GenerateNewCombi();
+    }
+
+
+
 
 }

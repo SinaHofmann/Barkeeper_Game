@@ -15,6 +15,7 @@ TagManager:
   - Ing_I
   - Ing_J
   - Ing
+  - Guest
   layers:
   - Default
   - TransparentFX

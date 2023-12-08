@@ -30,15 +30,7 @@ public class jug_manager : MonoBehaviour
     {
         if (playersDrinkList.Count < 3)
         {
-            playersDrinkList.Add(other.gameObject.GetComponent<ing_images>().id);
-
-            guestManager.ingPicGuestList[playersDrinkList.Count - 1].gameObject.SetActive(true);
-
-            guestManager.ingPicGuestList[playersDrinkList.Count - 1].sprite = other.gameObject.GetComponent<ing_images>().IngImage;
-            //we go to the ingPicList, to decide what entry we want, we get the entry from the playerDrinkList. So we always have the same entry on both lists. The we declare that in the entry 
-            //in the ingPicList will be filled with the Image that is on the Ing Mesh that was thrown in the jug
-
-            Destroy(other.gameObject);
+            guestManager.SpeechBubbleImages(other.gameObject);
         }
           
     }
