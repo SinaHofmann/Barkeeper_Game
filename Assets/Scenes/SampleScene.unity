@@ -8534,8 +8534,8 @@ MonoBehaviour:
   guestPrefabsList:
   - {fileID: 8852715249267999093, guid: d797f54f0583d664180c9bbd8e7fd911, type: 3}
   - {fileID: 4278098468010193762, guid: fa6e0eb2af928f24bb48adffed5bc45a, type: 3}
-  - {fileID: 2570368328156366414, guid: b6022e8c432f4c041bc7dad9aa6091f2, type: 3}
-  - {fileID: 5549816239401941698, guid: c338e69ebe739574089547abc7be247a, type: 3}
+  - {fileID: 1673145308083694330, guid: fe393120059bb6d4d9cae6bfd87a7f96, type: 3}
+  - {fileID: 8457708860544132168, guid: 4359815dccb57f349be7f5c8c9bf68d7, type: 3}
   - {fileID: 8290870314458618001, guid: d662cb7756dad214793999d79bf4c216, type: 3}
   round1List:
   - {fileID: 881346417}
