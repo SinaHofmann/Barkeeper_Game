@@ -15,7 +15,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
     IgnoreProjection: true
   disabledShaderPasses: []
@@ -154,12 +154,12 @@ Material:
     m_Floats:
     - Vector1_18854F8C: 0
     - Vector1_28BC39B5: 0
-    - Vector1_40385CE1: 3.6
+    - Vector1_40385CE1: 2.4
     - Vector1_48BDE471: 0
     - Vector1_66425DE2: 0
     - Vector1_7C2E78E4: 0.5
     - Vector1_A0DB3845: 0
-    - Vector1_F1294C90: 0
+    - Vector1_F1294C90: 0.98
     - _1st2nd_Shades_Feather: 0.0001
     - _1st_ShadeColor_Feather: 0.0001
     - _1st_ShadeColor_Step: 0.5
@@ -304,10 +304,10 @@ Material:
     - _utsVersionY: 7
     - _utsVersionZ: 5
     m_Colors:
-    - Color_9B881ED6: {r: 0.19023673, g: 0.48777476, b: 0.7075472, a: 1}
-    - Color_BED8F987: {r: 0.21867211, g: 0.735849, b: 0.61984676, a: 1}
-    - Color_CA4EAD0D: {r: 1, g: 1, b: 1, a: 0.19215687}
-    - Color_E9CFA916: {r: 0.6556604, g: 0.9634122, b: 1, a: 0.105882354}
+    - Color_9B881ED6: {r: 0.021181917, g: 0.16028635, b: 0.26415092, a: 0.15686275}
+    - Color_BED8F987: {r: 0.18115872, g: 0.6509434, b: 0.54417413, a: 0.0627451}
+    - Color_CA4EAD0D: {r: 0.6161, g: 0.6590376, b: 0.6698113, a: 0.050980393}
+    - Color_E9CFA916: {r: 0.7216981, g: 0.9715373, b: 1, a: 0.0627451}
     - _1st_ShadeColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
