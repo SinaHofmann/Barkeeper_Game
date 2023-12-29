@@ -337,7 +337,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6749553064785353639, guid: cc52a1a6b5dce434091e10f97e54a576, type: 3}
+  - {fileID: 2100000, guid: 9727319ef47b6d14da805c40a42bf095, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -383,7 +383,8 @@ SkinnedMeshRenderer:
   - {fileID: 8122976114067425494}
   - {fileID: 7262037703570322033}
   - {fileID: 5784071564287431845}
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 100
   m_RootBone: {fileID: 3696090694744969500}
   m_AABB:
     m_Center: {x: 0.0000013050158, y: 0.0030230507, z: -0.0010514096}
@@ -655,7 +656,7 @@ GameObject:
   - component: {fileID: 9084888312402444018}
   - component: {fileID: 8457708860544132171}
   m_Layer: 0
-  m_Name: guest_04
+  m_Name: guest_04_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

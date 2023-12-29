@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1549094e13dc94847ae99fffbbb2327f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.49425086, g: 0.6345424, b: 1.0357127, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -572,6 +572,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: candle_03 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 258832904604598053, guid: 0927cbed31f178f4a98f489180002475,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 638490299354834335, guid: 0927cbed31f178f4a98f489180002475,
         type: 3}
       propertyPath: m_RootOrder
@@ -651,6 +656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: candle_03 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 258832904604598053, guid: 0927cbed31f178f4a98f489180002475,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 638490299354834335, guid: 0927cbed31f178f4a98f489180002475,
         type: 3}
@@ -3595,7 +3605,7 @@ PrefabInstance:
     - target: {fileID: 5541248793703938673, guid: 69c2cdf23ff4c514e87be1bd6518e775,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.623
+      value: 2.893
       objectReference: {fileID: 0}
     - target: {fileID: 5541248793703938673, guid: 69c2cdf23ff4c514e87be1bd6518e775,
         type: 3}
@@ -3605,7 +3615,7 @@ PrefabInstance:
     - target: {fileID: 5541248793703938673, guid: 69c2cdf23ff4c514e87be1bd6518e775,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.434
+      value: 6.532
       objectReference: {fileID: 0}
     - target: {fileID: 5541248793703938673, guid: 69c2cdf23ff4c514e87be1bd6518e775,
         type: 3}
@@ -3834,6 +3844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: candle_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 658517955147354937, guid: 28af164a94bb2004ca4b75803e116807,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28af164a94bb2004ca4b75803e116807, type: 3}
@@ -5767,7 +5782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &410087040
 Light:
   m_ObjectHideFlags: 0
@@ -6440,6 +6455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: candle_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829066454685601096, guid: afdd80667b41504448180958ba5603e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3135548924290661013, guid: afdd80667b41504448180958ba5603e8,
         type: 3}
@@ -9426,11 +9446,12 @@ MonoBehaviour:
   red: {r: 0.7830189, g: 0.2224809, b: 0.040628344, a: 1}
   TryCounter: 1
   guestPrefabsList:
-  - {fileID: 1673145308083694330, guid: fe393120059bb6d4d9cae6bfd87a7f96, type: 3}
   - {fileID: 8457708860544132168, guid: 4359815dccb57f349be7f5c8c9bf68d7, type: 3}
+  - {fileID: 8457708860544132168, guid: 1f01ac1411ad06b4eba9ec34942d518f, type: 3}
+  - {fileID: 8457708860544132168, guid: 913d87d24884cfa429d9e812812b1926, type: 3}
   - {fileID: 1673145308083694330, guid: fe393120059bb6d4d9cae6bfd87a7f96, type: 3}
-  - {fileID: 8457708860544132168, guid: 4359815dccb57f349be7f5c8c9bf68d7, type: 3}
-  - {fileID: 8290870314458618001, guid: d662cb7756dad214793999d79bf4c216, type: 3}
+  - {fileID: 1673145308083694330, guid: fe393120059bb6d4d9cae6bfd87a7f96, type: 3}
+  - {fileID: 1673145308083694330, guid: fe393120059bb6d4d9cae6bfd87a7f96, type: 3}
   round1List:
   - {fileID: 881346417}
   - {fileID: 1061158987}
@@ -12196,6 +12217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: candle_03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 258832904604598053, guid: 0927cbed31f178f4a98f489180002475,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 638490299354834335, guid: 0927cbed31f178f4a98f489180002475,
         type: 3}
@@ -29492,6 +29518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: candle_03 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 258832904604598053, guid: 0927cbed31f178f4a98f489180002475,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 638490299354834335, guid: 0927cbed31f178f4a98f489180002475,
         type: 3}
