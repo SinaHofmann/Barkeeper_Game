@@ -12,26 +12,33 @@ public class camera_movement : MonoBehaviour
 
     private float xRotation = 0f;
 
+    public bool restrictCamMovement;
+
     private void Awake()
     {
         inputManager = FindObjectOfType<input_manager>();
 
-        Cursor.lockState = CursorLockMode.Locked; //cursor is always screen center
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None; 
+        Cursor.visible = true;
     }
 
     private void LateUpdate()
     {
-        float mouseX = inputManager.cameraInput.x * mouseSensitivity * Time.deltaTime;
-        float mouseY = inputManager.cameraInput.y * mouseSensitivity * Time.deltaTime;
+
+        if (restrictCamMovement == false)
+        {
+            float mouseX = inputManager.cameraInput.x * mouseSensitivity * Time.deltaTime;
+            float mouseY = inputManager.cameraInput.y * mouseSensitivity * Time.deltaTime;
 
 
-        xRotation = xRotation - mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation = xRotation - mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
-        playerBody.Rotate(Vector3.up * mouseX);
+            playerBody.Rotate(Vector3.up * mouseX);
+
+        }
 
 
     }

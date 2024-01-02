@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 2050233389021196352}
   - component: {fileID: 3303962642186379579}
   m_Layer: 0
-  m_Name: guest_03
+  m_Name: guest_03_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,7 +613,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5394980299792576753, guid: edf48f063139eb8499a66a7173b7285c, type: 3}
+  - {fileID: 2100000, guid: 91afa08636a516745868a6fd0710fbf6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -660,7 +660,8 @@ SkinnedMeshRenderer:
   - {fileID: 606676361607333242}
   - {fileID: 9061593212295824089}
   - {fileID: 4311104244013807667}
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 100
   m_RootBone: {fileID: 2207776901757985274}
   m_AABB:
     m_Center: {x: 0.000004152069, y: 0.0064074183, z: -0.0013107983}

@@ -16,6 +16,7 @@ TagManager:
   - Ing_J
   - Ing
   - Guest
+  - menushelf
   layers:
   - Default
   - TransparentFX

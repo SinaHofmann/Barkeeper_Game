@@ -7,6 +7,7 @@ public class pickup_object : MonoBehaviour
     //groﬂ schreiben nur wenn wir etwas neues declaren z.B, ein Transform oder ein Game Object
 
     input_manager inputManager; //1. actual name of script 2. how you will reference the script in this code
+    main_menu mainMenuScript;
     public Transform holdParent;
     public LayerMask interactableLayer; //lets you select a layer in editor
     public GameObject indicatorDecal; // ground marking
@@ -20,6 +21,8 @@ public class pickup_object : MonoBehaviour
     {
         inputManager = FindObjectOfType<input_manager>();
 
+        mainMenuScript = FindObjectOfType<main_menu>();
+
     }
 
     private void FixedUpdate()
@@ -32,8 +35,24 @@ public class pickup_object : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastRange, interactableLayer)) //where does the raycast start, which direction, where is the info stored, range, which layer will it register
                 {
-                    PickUp(hit.transform.gameObject); //this is what is called when the left mouse button is clicked, a raycast is created and pickUp function is called
+                    if (hit.transform.gameObject.CompareTag("menushelf")) //is it the menu shelf? yes, then call open menu, if not then pick it up
+                    {
+
+                        inputManager.pickUpInput = false;
+
+                        OpenMenu();
+
+                    }
+                    else
+                    {
+                        PickUp(hit.transform.gameObject); //this is what is called when the left mouse button is clicked, a raycast is created and pickUp function is called
+                    }
+
+                   
+
                 }
+
+
             }
 
         }
@@ -132,5 +151,10 @@ public class pickup_object : MonoBehaviour
         heldObject.transform.Rotate(Vector3.right * rotationspeed);
     }
 
+
+    void OpenMenu()
+    {
+        mainMenuScript.OpenMenuShelf();
+    }
 
 }

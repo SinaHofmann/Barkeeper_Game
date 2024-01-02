@@ -418,7 +418,7 @@ public class guest_manager : MonoBehaviour
 
     void FirstGuest()
     {
-        int randomGuest = Random.Range(0, 5);
+        int randomGuest = Random.Range(0, 6);
 
         GameObject instantiatedGuest = Instantiate(guestPrefabsList[randomGuest].gameObject);
 

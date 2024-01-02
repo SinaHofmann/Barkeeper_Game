@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class input_manager : MonoBehaviour
 {
-    Player_Controls playerControls;
+    public Player_Controls playerControls;
     public Vector2 movementInput;
     public Vector2 cameraInput;
     public bool pickUpInput;
