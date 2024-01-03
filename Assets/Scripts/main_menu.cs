@@ -34,6 +34,12 @@ public class main_menu : MonoBehaviour
     public GameObject MenuCanvas;
 
 
+
+    public Animator rightDoorAnim;
+    public Animator leftDoorAnim;
+
+
+
     public float transitionDuration = 1f;
 
     Vector3 previousCamPosition;
@@ -54,11 +60,16 @@ public class main_menu : MonoBehaviour
 
     public void PlayButton()
     {
+        rightDoorAnim.SetTrigger("RightShelfClose");
+        leftDoorAnim.SetTrigger("LeftShelfClose");
+
         StartCoroutine(CamToPlayerStartPos(camStartPos.position, camStartPos.rotation));
     }
 
     public void ReturnToGameButton()
     {
+        rightDoorAnim.SetTrigger("RightShelfClose");
+        leftDoorAnim.SetTrigger("LeftShelfClose");
 
         StartCoroutine(CamToPlayerCurrentPos(previousCamPosition, previousCamRotation));
     }
@@ -81,7 +92,12 @@ public class main_menu : MonoBehaviour
         previousCamPosition = mainCameraTransform.position;
         previousCamRotation = mainCameraTransform.rotation;
 
-      
+
+
+        rightDoorAnim.SetTrigger("RightShelfOpen");
+        leftDoorAnim.SetTrigger("LeftShelfOpen");
+
+
 
         StartCoroutine(CamToMenuPos(camPosMenu.position, camPosMenu.rotation));
 

@@ -15,7 +15,7 @@ public class jug_manager : MonoBehaviour
 
     public bool drinkServed = false;
 
-    public GameObject ServePrompt;
+   // public GameObject ServePrompt;
 
 
     private void Start()
@@ -51,11 +51,13 @@ public class jug_manager : MonoBehaviour
     {
         //if the UI element is off it will be turned on
 
+        /*
         if (ServePrompt.activeInHierarchy == false)
         {
             ServePrompt.SetActive(true);
 
         }
+        */
 
         if (inputManager.serveDrinkInput) //if F is pressed, Ui element will turn off and drink served is true
         {
@@ -63,7 +65,7 @@ public class jug_manager : MonoBehaviour
 
             drinkServed = true;
 
-            ServePrompt.SetActive(false);
+            //ServePrompt.SetActive(false);
 
             Debug.Log("Drink was served");
         }
