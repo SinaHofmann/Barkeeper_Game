@@ -31,8 +31,11 @@ public class main_menu : MonoBehaviour
 
     public GameObject ReturnButtonObj;
 
-    public GameObject MenuCanvas;
+    public GameObject MenuCanvas01;
 
+    public GameObject MenuCanvas02;
+
+    public GameObject MenuCanvas03;
 
 
     public Animator rightDoorAnim;
@@ -103,11 +106,21 @@ public class main_menu : MonoBehaviour
 
     }
 
+    public void QuitButton()
+    {
+        Debug.Log("Bye bye");
+
+        Application.Quit();
+    }
+
 
     IEnumerator CamToPlayerStartPos(Vector3 targetCamPosition, Quaternion targetCamRotation)
     {
 
         float elapsedTime = 0;
+
+        ReturnButtonObj.SetActive(true);
+        PlayButtonObj.SetActive(false);
 
 
         Vector3 initialCamPosition = mainCameraTransform.position;
@@ -155,6 +168,8 @@ public class main_menu : MonoBehaviour
         float elapsedTime = 0;
 
 
+        
+
         Vector3 initialCamPosition = mainCameraTransform.position;
         Quaternion initialCamRotation = mainCameraTransform.rotation;
 
@@ -187,6 +202,11 @@ public class main_menu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        yield return new WaitForSeconds(2); //we need to wait a moment for the doors to close until the Menu UI can despawn
+
+        MenuCanvas01.SetActive(false);
+        MenuCanvas02.SetActive(false);
+        MenuCanvas03.SetActive(false);
 
 
         Debug.Log("weee to the player");
@@ -198,7 +218,11 @@ public class main_menu : MonoBehaviour
     {
 
         float elapsedTime = 0;
-        
+
+        MenuCanvas01.SetActive(true);
+        MenuCanvas02.SetActive(true);
+        MenuCanvas03.SetActive(true);
+
 
         Vector3 initialCamPosition = mainCameraTransform.position;
         Quaternion initialCamRotation = mainCameraTransform.rotation;
