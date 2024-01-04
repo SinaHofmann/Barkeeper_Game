@@ -20,6 +20,8 @@ public class main_menu : MonoBehaviour
 
     camera_movement camMovementScript;
 
+    pickup_object pickUpObject;
+
 
     public Transform camPosMenu;
 
@@ -53,18 +55,22 @@ public class main_menu : MonoBehaviour
     {
         inputManager = FindObjectOfType<input_manager>();
         camMovementScript = FindObjectOfType<camera_movement>();
+        pickUpObject = FindObjectOfType<pickup_object>();
 
         inputManager.playerControls.player_movement.Disable();
         inputManager.playerControls.menu_movement.Enable();
 
         camMovementScript.restrictCamMovement = true;
-        
+
+        pickUpObject.crosshair.SetActive(false);
     }
 
     public void PlayButton()
     {
         rightDoorAnim.SetTrigger("RightShelfClose");
         leftDoorAnim.SetTrigger("LeftShelfClose");
+
+        
 
         StartCoroutine(CamToPlayerStartPos(camStartPos.position, camStartPos.rotation));
     }
@@ -73,6 +79,9 @@ public class main_menu : MonoBehaviour
     {
         rightDoorAnim.SetTrigger("RightShelfClose");
         leftDoorAnim.SetTrigger("LeftShelfClose");
+
+
+
 
         StartCoroutine(CamToPlayerCurrentPos(previousCamPosition, previousCamRotation));
     }
@@ -100,7 +109,7 @@ public class main_menu : MonoBehaviour
         rightDoorAnim.SetTrigger("RightShelfOpen");
         leftDoorAnim.SetTrigger("LeftShelfOpen");
 
-
+        
 
         StartCoroutine(CamToMenuPos(camPosMenu.position, camPosMenu.rotation));
 
@@ -147,6 +156,7 @@ public class main_menu : MonoBehaviour
         //here we activate player movement
 
 
+
         inputManager.playerControls.menu_movement.Disable();
         inputManager.playerControls.player_movement.Enable();
 
@@ -156,6 +166,7 @@ public class main_menu : MonoBehaviour
         Cursor.visible = false;
 
 
+        pickUpObject.crosshair.SetActive(true);
 
 
         Debug.Log("uh we startin");
@@ -202,12 +213,13 @@ public class main_menu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        yield return new WaitForSeconds(2); //we need to wait a moment for the doors to close until the Menu UI can despawn
+        
 
         MenuCanvas01.SetActive(false);
         MenuCanvas02.SetActive(false);
         MenuCanvas03.SetActive(false);
 
+        pickUpObject.crosshair.SetActive(true);
 
         Debug.Log("weee to the player");
 
@@ -219,9 +231,13 @@ public class main_menu : MonoBehaviour
 
         float elapsedTime = 0;
 
+
+
         MenuCanvas01.SetActive(true);
         MenuCanvas02.SetActive(true);
         MenuCanvas03.SetActive(true);
+
+        pickUpObject.crosshair.SetActive(false);
 
 
         Vector3 initialCamPosition = mainCameraTransform.position;

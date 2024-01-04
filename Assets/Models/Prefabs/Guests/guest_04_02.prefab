@@ -295,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4958603802155391682}
   - component: {fileID: 6328850811276052602}
+  - component: {fileID: 5506821312840785940}
   m_Layer: 0
   m_Name: guest_04
   m_TagString: Untagged
@@ -311,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 5368846065157386311}
   m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 99.99999, y: 100, z: 100}
+  m_LocalScale: {x: 24.869997, y: 24.869999, z: 24.869999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9084888312402444018}
@@ -390,6 +391,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000013050158, y: 0.0030230507, z: -0.0010514096}
     m_Extent: {x: 0.006175223, y: 0.010321151, z: 0.0056874477}
   m_DirtyAABB: 0
+--- !u!136 &5506821312840785940
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368846065157386311}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.020565242
+  m_Height: 0.07079823
+  m_Direction: 2
+  m_Center: {x: -0.00063829334, y: 0.0004512168, z: 0.03615922}
 --- !u!1 &5878847085620629565
 GameObject:
   m_ObjectHideFlags: 0

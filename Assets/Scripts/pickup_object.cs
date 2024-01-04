@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class pickup_object : MonoBehaviour
 {
@@ -17,11 +18,52 @@ public class pickup_object : MonoBehaviour
     public float dragforce;
     public float rotationspeed;
 
+    public GameObject crosshair;
+    public GameObject crosshairSmall;
+    public GameObject crosshairBig;
+
+
+
+
     private void Start()
     {
         inputManager = FindObjectOfType<input_manager>();
 
         mainMenuScript = FindObjectOfType<main_menu>();
+
+    }
+
+    private void Update()
+    {
+        RaycastHit hit;
+
+        
+        if (heldObject != null)
+        {
+            crosshairSmall.SetActive(true);
+
+            crosshairBig.SetActive(false);
+        }
+        else if(heldObject == null)
+        {
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastRange, interactableLayer))
+            {
+                //crosshair image should expand in size
+
+                crosshairBig.SetActive(true);
+
+                crosshairSmall.SetActive(false);
+
+            }
+            else
+            {
+                crosshairSmall.SetActive(true);
+
+                crosshairBig.SetActive(false);
+            }
+
+        }
+
 
     }
 
@@ -46,6 +88,8 @@ public class pickup_object : MonoBehaviour
                     else
                     {
                         PickUp(hit.transform.gameObject); //this is what is called when the left mouse button is clicked, a raycast is created and pickUp function is called
+
+                        
                     }
 
                    

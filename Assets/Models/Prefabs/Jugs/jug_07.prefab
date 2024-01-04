@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 103036156115093193}
   - component: {fileID: 3945669235686771052}
   - component: {fileID: 1235431099671051686}
+  - component: {fileID: 6401470176896700239}
   m_Layer: 0
   m_Name: jug_07
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6401470176896700239
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731235130469997683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8993495584932997220, guid: dd8cf121554434a4d97f805f8dd9a2ea, type: 3}
