@@ -16,6 +16,8 @@ public class guest_manager : MonoBehaviour
 
     public List<Image> feedbackColoursGuestList = new List<Image>(); //coloured feedback in guest speechbubble
 
+    
+
     jug_manager jugManager; //1. actual name of script 2. how you will reference the script in this code
 
     private bool comparingStartet;
@@ -31,6 +33,11 @@ public class guest_manager : MonoBehaviour
     public Color red;
 
     public int TryCounter = 1;
+
+    public GameObject reactGood;
+    public GameObject reactMeh;
+    public GameObject reactBad;
+
 
     [Space(30)]
     [Header("Guest Prefabs")]
@@ -84,18 +91,15 @@ public class guest_manager : MonoBehaviour
 
 
 
-    
 
 
     private void Start()
     {
         
-
         jugManager = FindObjectOfType<jug_manager>();
 
         FirstGuest();
-
-    
+  
     }
 
     void GenerateNewCombi()
@@ -103,12 +107,14 @@ public class guest_manager : MonoBehaviour
         // wipe the guest list
         guestsDrinkList.Clear();
 
+
         //wipe the speech bubble
 
         for (int i = 0; i < 3; i++)
         {
 
             ingPicGuestList[i].gameObject.SetActive(false);
+
 
             feedbackColoursGuestList[i].gameObject.SetActive(false);
 
@@ -137,6 +143,12 @@ public class guest_manager : MonoBehaviour
 
             guestsDrinkList.Add(numberToAdd);
         }
+
+        //wipe guest reaction
+
+        reactGood.SetActive(false);
+        reactMeh.SetActive(false);
+        reactBad.SetActive(false);
 
 
         motherList.Add(round1List);
@@ -169,6 +181,10 @@ public class guest_manager : MonoBehaviour
         comparingStartet = true;
 
         speechbubble.SetActive(true);
+
+        
+        
+       
 
         for (int i = 0; i < 3; i++) //loop repeats its content 3 times
         {
@@ -248,6 +264,9 @@ public class guest_manager : MonoBehaviour
         {
             Debug.Log("You won!");
 
+            //guest reaction "right drink!"
+            reactGood.SetActive(true);
+
             StartCoroutine(StartNewRound());
 
         }
@@ -256,12 +275,17 @@ public class guest_manager : MonoBehaviour
 
             Debug.Log("Next try");
 
+          
+
             StartCoroutine(NextTryTimer());
 
         }
         else if (greenSlot != 3 && TryCounter == 5)
         {
             Debug.Log("You lost!");
+
+            //guest reaction "no more tries!"
+            reactBad.SetActive(true);
 
             StartCoroutine(StartNewRound());
 
@@ -287,7 +311,8 @@ public class guest_manager : MonoBehaviour
 
     IEnumerator NextTryTimer()
     {
-
+        //guest reaction "wrong drink!"
+        reactMeh.SetActive(true);
 
         // content of speechbubble appears on board 
 
@@ -327,7 +352,8 @@ public class guest_manager : MonoBehaviour
 
         comparingStartet = false;
 
-
+        // guest reaction wipe
+        reactMeh.SetActive(false);
 
         // ing new spawn, destroy all ing and respawn new ones
 
