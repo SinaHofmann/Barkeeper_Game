@@ -9,8 +9,10 @@ public class pickup_object : MonoBehaviour
 
     input_manager inputManager; //1. actual name of script 2. how you will reference the script in this code
     main_menu mainMenuScript;
+    guest_manager guestManager;
     public Transform holdParent;
     public LayerMask interactableLayer; //lets you select a layer in editor
+    public LayerMask groundMarkingLayer; //lets you select a layer in editor
     public GameObject indicatorDecal; // ground marking
     private GameObject heldObject;
     public float movementForce; //how fast the held Object will be moved while holding
@@ -30,6 +32,8 @@ public class pickup_object : MonoBehaviour
         inputManager = FindObjectOfType<input_manager>();
 
         mainMenuScript = FindObjectOfType<main_menu>();
+
+        guestManager = FindObjectOfType<guest_manager>();
 
     }
 
@@ -85,6 +89,14 @@ public class pickup_object : MonoBehaviour
                         OpenMenu();
 
                     }
+                    else if (hit.transform.gameObject.CompareTag("goldenJug")) //if we hit the golden jug, when it becomes interactable, something will happen
+                    {
+
+                        inputManager.pickUpInput = false;
+
+                        guestManager.SwapJugs();
+
+                    }
                     else
                     {
                         PickUp(hit.transform.gameObject); //this is what is called when the left mouse button is clicked, a raycast is created and pickUp function is called
@@ -107,7 +119,9 @@ public class pickup_object : MonoBehaviour
 
             RaycastHit hitDecal;
 
-            if (Physics.Raycast(heldObject.transform.position, Vector3.down, out hitDecal, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Ignore)) //ground marking code
+            
+
+            if (Physics.Raycast(heldObject.transform.position, Vector3.down, out hitDecal, Mathf.Infinity, groundMarkingLayer, QueryTriggerInteraction.Ignore)) //ground marking code
             {
                 indicatorDecal.SetActive(true);
 

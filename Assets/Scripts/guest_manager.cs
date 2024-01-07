@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class guest_manager : MonoBehaviour
 {
@@ -89,9 +90,25 @@ public class guest_manager : MonoBehaviour
     public Transform spawnPointI;
     public Transform spawnPointJ;
 
+    [Space(30)]
+    [Header("Tips and Golden Jar")]
+    [Space(10)]
 
+    public TMP_Text tipCounter;
+    public int tipAmount;
+    public int tipRoundOne;
+    public int tipRoundTwo;
+    public int tipRoundThree;
+    public int tipRoundFour;
+    public int tipRoundFive;
 
-
+    public GameObject goldenJug;
+    public GameObject regularJug;
+    public Material goldenJugMat;
+    public Material regularJugMat;
+    public ParticleSystem sparkles;
+    public Transform sparklesPos;
+    private bool goldenJugWon;
 
     private void Start()
     {
@@ -172,7 +189,33 @@ public class guest_manager : MonoBehaviour
             }
         }
 
+
+        if (tipAmount >= 100 && goldenJugWon == false)
+        {
+            //golden jug becomes clickable and on click will swap places with the regular jug
+            goldenJug.layer = 6;
+           
+        }
         
+    }
+
+    public void SwapJugs()
+    {
+
+        //swapping the materials and the particle effect
+        Debug.Log("swapping the jugs!");
+
+        goldenJugWon = true;
+
+        regularJug.GetComponent<MeshRenderer>().material = goldenJugMat;
+
+        sparkles.transform.position = sparklesPos.position;
+
+        goldenJug.GetComponent<MeshRenderer>().material = regularJugMat;
+
+        goldenJug.layer = 0;
+
+
     }
 
     //wir prüfen, ob der spieler das getränk serviert hat. Dann müssen playersDrinkList und guestsDrinkList verglichen werden, hier wird das Feedback erzeugt
@@ -266,6 +309,44 @@ public class guest_manager : MonoBehaviour
 
             //guest reaction "right drink!"
             reactGood.SetActive(true);
+
+            //checken was trycounter ist und jeweils eine zahl zuweisen if statement
+
+            if (TryCounter == 1)
+            {
+                tipAmount += tipRoundOne; //aktueller tip wird dem total amount addiert
+
+                tipCounter.text = tipAmount.ToString();
+            }
+
+            if (TryCounter == 2)
+            {
+                tipAmount += tipRoundTwo; //aktueller tip wird dem total amount addiert
+
+                tipCounter.text = tipAmount.ToString();
+            }
+
+            if (TryCounter == 3)
+            {
+                tipAmount += tipRoundThree; //aktueller tip wird dem total amount addiert
+
+                tipCounter.text = tipAmount.ToString();
+            }
+
+            if (TryCounter == 4)
+            {
+                tipAmount += tipRoundFour; //aktueller tip wird dem total amount addiert
+
+                tipCounter.text = tipAmount.ToString();
+            }
+
+            if (TryCounter == 5)
+            {
+                tipAmount += tipRoundFive; //aktueller tip wird dem total amount addiert
+
+                tipCounter.text = tipAmount.ToString();
+            }
+
 
             StartCoroutine(StartNewRound());
 
