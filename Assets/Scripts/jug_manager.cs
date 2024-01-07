@@ -15,6 +15,8 @@ public class jug_manager : MonoBehaviour
 
     public bool drinkServed = false;
 
+    public ParticleSystem splash;
+
    // public GameObject ServePrompt;
 
 
@@ -32,6 +34,8 @@ public class jug_manager : MonoBehaviour
         {
             guestManager.SpeechBubbleImages(other.gameObject);
         }
+
+        splash.Play();
           
     }
 
