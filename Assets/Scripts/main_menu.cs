@@ -23,6 +23,8 @@ public class main_menu : MonoBehaviour
 
     pickup_object pickUpObject;
 
+    player_movement playerMovement;
+
 
     public Transform camPosMenu;
 
@@ -59,6 +61,7 @@ public class main_menu : MonoBehaviour
         inputManager = FindObjectOfType<input_manager>();
         camMovementScript = FindObjectOfType<camera_movement>();
         pickUpObject = FindObjectOfType<pickup_object>();
+        playerMovement = FindObjectOfType<player_movement>();
 
         inputManager.playerControls.player_movement.Disable();
         inputManager.playerControls.menu_movement.Enable();
@@ -126,12 +129,27 @@ public class main_menu : MonoBehaviour
         Application.Quit();
     }
 
+    public void RestartButton()
+    {
+        Debug.Log("Restarted game");
+
+
+        playerMovement.Reset();
+
+    }
 
     public void OpenSinasWebsite()
     {
         Debug.Log("open artstation");
 
         Application.OpenURL("https://sina_hofmann.artstation.com/");
+    }
+
+    public void OpenJonasWebsite()
+    {
+        Debug.Log("open itch.io");
+
+        Application.OpenURL("https://truejones.itch.io/");
     }
 
     IEnumerator CamToPlayerStartPos(Vector3 targetCamPosition, Quaternion targetCamRotation)

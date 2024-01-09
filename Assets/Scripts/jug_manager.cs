@@ -43,6 +43,11 @@ public class jug_manager : MonoBehaviour
 
         splashEffect.Play();
 
+
+        float randomNumber = Random.Range(0.7f, 1.3f);
+
+        splashSound.pitch = randomNumber;
+
         splashSound.Play();
 
 

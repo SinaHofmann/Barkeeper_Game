@@ -48,6 +48,10 @@ public class guest_manager : MonoBehaviour
 
     private GameObject currentGuest;
 
+    public ParticleSystem guestDespawnEffect;
+
+    public AudioSource guestDespawnSound;
+
     
 
     private List<List<Image>> motherList = new List<List<Image>>(); //mother list that containes 5 lists, 1 for each round
@@ -480,7 +484,13 @@ public class guest_manager : MonoBehaviour
     {
         //guest despawn animation goes here
 
+        
+
         yield return new WaitForSeconds(3);
+
+        guestDespawnEffect.Play();
+
+        guestDespawnSound.Play();
 
         Destroy(currentGuest.gameObject);
 
