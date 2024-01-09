@@ -110,6 +110,8 @@ public class guest_manager : MonoBehaviour
     public Transform sparklesPos;
     private bool goldenJugWon;
 
+    public AudioSource coinSound;
+
     private void Start()
     {
         
@@ -309,6 +311,8 @@ public class guest_manager : MonoBehaviour
 
             //guest reaction "right drink!"
             reactGood.SetActive(true);
+
+            coinSound.Play();
 
             //checken was trycounter ist und jeweils eine zahl zuweisen if statement
 

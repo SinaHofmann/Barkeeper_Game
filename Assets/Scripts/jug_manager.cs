@@ -15,7 +15,9 @@ public class jug_manager : MonoBehaviour
 
     public bool drinkServed = false;
 
-    public ParticleSystem splash;
+    public ParticleSystem splashEffect;
+
+    public AudioSource splashSound;
 
    // public GameObject ServePrompt;
 
@@ -30,13 +32,20 @@ public class jug_manager : MonoBehaviour
 
     void OnTriggerEnter(Collider other) //what happens if something is thrown in the jar
     {
+        
+
         if (playersDrinkList.Count < 3)
         {
             guestManager.SpeechBubbleImages(other.gameObject);
         }
 
-        splash.Play();
-          
+       
+
+        splashEffect.Play();
+
+        splashSound.Play();
+
+
     }
 
     void Update()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class main_menu : MonoBehaviour
 {
 
@@ -50,6 +51,8 @@ public class main_menu : MonoBehaviour
     Vector3 previousCamPosition;
     Quaternion previousCamRotation;
 
+   
+
 
     public void Start()
     {
@@ -65,6 +68,7 @@ public class main_menu : MonoBehaviour
         pickUpObject.crosshair.SetActive(false);
     }
 
+   
     public void PlayButton()
     {
         rightDoorAnim.SetTrigger("RightShelfClose");
@@ -122,6 +126,13 @@ public class main_menu : MonoBehaviour
         Application.Quit();
     }
 
+
+    public void OpenSinasWebsite()
+    {
+        Debug.Log("open artstation");
+
+        Application.OpenURL("https://sina_hofmann.artstation.com/");
+    }
 
     IEnumerator CamToPlayerStartPos(Vector3 targetCamPosition, Quaternion targetCamRotation)
     {
