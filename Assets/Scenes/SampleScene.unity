@@ -26099,6 +26099,9 @@ MonoBehaviour:
   - {fileID: 6028546847050231400, guid: 368242edf46cdbb42a408e30d5435411, type: 3}
   - {fileID: 7036189098378094140, guid: 29b2396383f431a4582312eb5b2401c2, type: 3}
   - {fileID: 2820683023974508734, guid: 1a3a76d6b3f24d54ca19ec600f8ea93b, type: 3}
+  - {fileID: 7566525881156095328, guid: 906f128c66cbcb744bebf1f116ea217f, type: 3}
+  - {fileID: 8903820687745845434, guid: 3ec26efdc3b0c8249bc5297ceca1448c, type: 3}
+  - {fileID: 3830523665152511722, guid: de93ae92a0ad1b146ac7797519837c0a, type: 3}
   guestDespawnEffect: {fileID: 185833649}
   guestDespawnSound: {fileID: 1021560973}
   round1List:
