@@ -45,6 +45,8 @@ public class guest_manager : MonoBehaviour
     [Space(10)]
 
     public List<GameObject> guestPrefabsList = new List<GameObject>();
+    private List<GameObject> guestPrefabsListForSpawning = new List<GameObject>();
+
 
     private GameObject currentGuest;
 
@@ -115,6 +117,7 @@ public class guest_manager : MonoBehaviour
     private bool goldenJugWon;
 
     public AudioSource coinSound;
+    public ParticleSystem coinEffect;
 
     private void Start()
     {
@@ -317,6 +320,8 @@ public class guest_manager : MonoBehaviour
             reactGood.SetActive(true);
 
             coinSound.Play();
+            coinEffect.Play();
+
 
             //checken was trycounter ist und jeweils eine zahl zuweisen if statement
 
@@ -495,11 +500,7 @@ public class guest_manager : MonoBehaviour
         Destroy(currentGuest.gameObject);
 
 
-        int randomGuest = Random.Range(0, 12);
-
-        GameObject instantiatedGuest = Instantiate(guestPrefabsList[randomGuest].gameObject);
-
-        currentGuest = instantiatedGuest;
+        SpawnGuest();
 
         GenerateNewCombi();
 
@@ -539,11 +540,16 @@ public class guest_manager : MonoBehaviour
 
     void FirstGuest()
     {
-        int randomGuest = Random.Range(0, 12);
 
-        GameObject instantiatedGuest = Instantiate(guestPrefabsList[randomGuest].gameObject);
 
-        currentGuest = instantiatedGuest;
+        for (int i = 0; i < guestPrefabsList.Count; i++)
+        {
+            guestPrefabsListForSpawning.Add(guestPrefabsList[i]);
+        }
+
+
+
+        SpawnGuest();
 
         
 
@@ -551,6 +557,24 @@ public class guest_manager : MonoBehaviour
     }
 
 
+    void SpawnGuest()
+    {
+        if (guestPrefabsListForSpawning.Count == 0)
+        {
+            for (int i = 0; i < guestPrefabsList.Count; i++)
+            {
+                guestPrefabsListForSpawning.Add(guestPrefabsList[i]);
+            }
+        }
 
+
+        int randomGuest = Random.Range(0, guestPrefabsListForSpawning.Count);
+
+        GameObject instantiatedGuest = Instantiate(guestPrefabsListForSpawning[randomGuest].gameObject);
+        guestPrefabsListForSpawning.RemoveAt(randomGuest);
+
+
+        currentGuest = instantiatedGuest;
+    }
 
 }
