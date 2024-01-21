@@ -29694,7 +29694,7 @@ PrefabInstance:
     - target: {fileID: 258832904604598053, guid: 0927cbed31f178f4a98f489180002475,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 638490299354834335, guid: 0927cbed31f178f4a98f489180002475,
         type: 3}
@@ -37348,13 +37348,13 @@ MonoBehaviour:
 
     - be polite to the portal guests
 
-    - strange language,
-    but same thirst for drinks!
+    - they do not speak,
+    but still want drinks!
 
-    - they will give you feedback on your drink
-    mixture
+    - they will give you feedback on your drink mixture
 
-    - try to find the correct combination'
+    -
+    try to find the correct combination'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b56fec7cfb601b4f87ff3a94997717e, type: 2}
   m_sharedMaterial: {fileID: -2459365303353125151, guid: 3b56fec7cfb601b4f87ff3a94997717e,
